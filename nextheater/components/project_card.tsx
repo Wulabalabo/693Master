@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import {
   Card,
@@ -8,6 +10,9 @@ import {
   CardTitle,
 } from "./ui/card";
 import { Button } from "./ui/button";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import DetailsDialog from "./details_dialog";
 
 export type ProjectCardProps = {
   Title: string;
@@ -15,11 +20,20 @@ export type ProjectCardProps = {
   Image: string;
   Author: string;
   Staking: string;
-  Proposals:string;
-  Process:string;
+  Proposals: string;
+  Process: string;
 };
 
 const ProjectCard = (props: ProjectCardProps) => {
+  const router = useRouter();
+  const [showDetail,setShowDetail] = useState(false)
+    const handleDetailsClick = () => {
+      setShowDetail(true);
+    };
+
+    const handleCloseDialog = () => {
+      setShowDetail(false);
+    };
   return (
     <div className="flex flex-row border-primary border-b-4 p-4 rounded-3xl justify-between space-x-10">
       <Card className="rounded-3xl basis-3/4">
@@ -58,9 +72,17 @@ const ProjectCard = (props: ProjectCardProps) => {
             <p className="text-2xl">{props.Process} Week</p>
           </div>
         </CardContent>
-        <CardFooter className="pt-5 flex justify-between">
-          <Button variant={"outline"}>Details</Button>
-          <Button>Proposals</Button>
+        <CardFooter className="pt-5">
+          <Button className="flex-1" onClick={handleDetailsClick}>
+            Bit
+          </Button>
+          {showDetail && (
+            <DetailsDialog
+              project={props}
+              open={showDetail}
+              handleClose={handleCloseDialog}
+            />
+          )}
         </CardFooter>
       </Card>
     </div>

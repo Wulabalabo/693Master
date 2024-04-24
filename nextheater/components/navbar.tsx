@@ -11,34 +11,28 @@ const NavBar = () => {
       </aside>
       <div className="flex space-x-10 text-2xl items-center">
         <Link
-          href="#"
-          className="text-muted-foreground transition-colors hover:text-foreground"
-        >
-          Dashboard
-        </Link>
-        <Link
-          href="#"
-          className="text-muted-foreground transition-colors hover:text-foreground"
-        >
-          Orders
-        </Link>
-        <Link
-          href="#"
-          className="text-muted-foreground transition-colors hover:text-foreground"
-        >
-          Products
-        </Link>
-        <Link
-          href="#"
-          className="text-muted-foreground transition-colors hover:text-foreground"
-        >
-          Customers
-        </Link>
-        <Link
-          href="#"
+          href="/"
           className="text-foreground transition-colors hover:text-foreground"
         >
-          Settings
+          Auction
+        </Link>
+        <Link
+          href="/collections"
+          className="text-muted-foreground transition-colors hover:text-foreground"
+        >
+          Collections
+        </Link>
+        <Link
+          href="/create"
+          className="text-muted-foreground transition-colors hover:text-foreground"
+        >
+          Create
+        </Link>
+        <Link
+          href="/"
+          className="text-muted-foreground transition-colors hover:text-foreground"
+        >
+          Proposals
         </Link>
       </div>
       <div className="ml-auto">
